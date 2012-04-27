@@ -15,6 +15,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    dalli (2.0.3)
     faraday (0.5.3)
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
@@ -29,6 +30,8 @@ GEM
       multi_json (~> 0.0.4)
     pg (0.13.2)
     rack (1.2.1)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-rewrite (1.2.1)
     running_man (0.2.1)
     sinatra (1.2.8)
@@ -46,11 +49,13 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 3.0.1)
+  dalli
   faraday (~> 0.5.3)
   haml (~> 3.0.23)
   mustache (~> 0.11.2)
   oauth2 (~> 0.1.0)
   pg
+  rack-cache
   rack-rewrite
   running_man (~> 0.2.1)
   sinatra (~> 1.2.0)

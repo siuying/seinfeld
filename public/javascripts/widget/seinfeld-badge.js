@@ -20,7 +20,6 @@
                 }).append('<img src="http://opensource.reality.hk/images/x_1.png" height="80%" width="50%">');
                 $progressed.append($x);
              });
-            $seinfeld.append($streaks).append('<p class="pimpage"><a href="https://github.com/lachlanhardy/seinfeld-badge">Want your own badge?</a></p>');
         });
     });
 })();

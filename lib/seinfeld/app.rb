@@ -149,6 +149,7 @@ class Seinfeld
       def show_user_calendar
         @progressions = get_user_and_progressions(6)
         if @user
+          etag @user.etag
           cache_for 5.minutes
           haml :show
         else

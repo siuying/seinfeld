@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require "rack/cache"
 require 'mustache/sinatra'
 require 'oauth2'
 require 'yajl'
@@ -14,7 +13,6 @@ class Seinfeld
 
   class App < Sinatra::Base
     register Mustache::Sinatra
-    use Rack::Cache
     use Rack::Rewrite do
       r301 %r{.*}, 'http://opensource.reality.hk$&', :if => Proc.new {|rack_env|
         rack_env['SERVER_NAME'] != 'opensource.reality.hk'
@@ -51,7 +49,6 @@ class Seinfeld
     end
 
     get '/' do
-      cache_for 5.minutes
       @recent_users  = Seinfeld::User.best_current_streak
       @alltime_users = Seinfeld::User.best_alltime_streak
       haml :index
@@ -66,7 +63,6 @@ class Seinfeld
         @user = Seinfeld::User.find_by_login(params[:name].downcase)
       end
       if @user
-        cache_for 1.hour
         haml :widget
       else
         redirect '/'
@@ -156,8 +152,6 @@ class Seinfeld
       def show_user_calendar
         @progressions = get_user_and_progressions(6)
         if @user
-          etag @user.etag
-          cache_for 5.minutes
           haml :show
         else
           redirect "/"
@@ -165,7 +159,6 @@ class Seinfeld
       end
   
       def show_group_calendar
-        cache_for 5.minutes
         @progressions = Set.new
         @users = params[:names].split(',')
         @users.each do |name|
@@ -175,7 +168,6 @@ class Seinfeld
       end
 
       def show_user_json
-        cache_for 5.minutes
         @progressions = get_user_and_progressions
         json = {:days => @progressions.map { |p| p.to_s }.sort!, :longest_streak => @user.longest_streak, :current_streak => @user.current_streak}.to_json
         if params[:callback]
@@ -217,10 +209,6 @@ class Seinfeld
             [d.mday, {:class => "slacked"}]
           end
         end
-      end
-
-      def cache_for(time)
-        cache_control :public, :max_age => time.to_i
       end
     end
 

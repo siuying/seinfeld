@@ -2,7 +2,6 @@ source "http://rubygems.org"
 
 gem "sinatra",         "~> 1.2.0"
 gem "haml",            "~> 3.0.23"
-gem "dalli"
 
 gem "yajl-ruby",       "~> 0.7.8"
 gem "activerecord",    "~> 3.0.1"
@@ -12,7 +11,6 @@ gem "oauth2",          "~> 0.1.0"
 gem "typhoeus",        "~> 0.1.31"
 
 gem "rack-rewrite"
-gem "rack-cache"
 
 group :production do
   gem "pg"

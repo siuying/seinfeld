@@ -28,6 +28,7 @@ GEM
     oauth2 (0.1.0)
       faraday (~> 0.5.0)
       multi_json (~> 0.0.4)
+    pg (0.13.2)
     rack (1.2.1)
     running_man (0.2.1)
     sinatra (1.1.0)
@@ -50,6 +51,7 @@ DEPENDENCIES
   memcache-client (~> 1.8.5)
   mustache (~> 0.11.2)
   oauth2 (~> 0.1.0)
+  pg
   running_man (~> 0.2.1)
   sinatra (~> 1.1.0)
   sqlite3

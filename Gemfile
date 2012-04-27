@@ -10,6 +10,10 @@ gem "faraday",         "~> 0.5.3"
 gem "oauth2",          "~> 0.1.0"
 gem "typhoeus",        "~> 0.1.31"
 
+group :production do
+  gem "pg"
+end
+
 group :development do
   gem "sqlite3"
 end

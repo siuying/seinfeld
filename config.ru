@@ -4,7 +4,7 @@ require 'rack/rewrite'
 use Rack::Rewrite do
   r301 '/', '/~siuying'
   r301 %r{.*}, 'http://opensource.reality.hk$&', :if => Proc.new {|rack_env|
-    rack_env['SERVER_NAME'] != 'opensource.reality.hk' && ENV['RAILS_ENV'] == 'production'
+    rack_env['SERVER_NAME'] != 'opensource.reality.hk' && ENV['RACK_ENV'] == 'production'
   }
 end
 

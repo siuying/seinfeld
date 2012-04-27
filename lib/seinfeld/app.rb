@@ -3,6 +3,7 @@ require "rack/cache"
 require 'mustache/sinatra'
 require 'oauth2'
 require 'yajl'
+require 'haml'
 
 class Seinfeld
   module Views

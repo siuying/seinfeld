@@ -9,6 +9,7 @@ gem "mustache",        "~> 0.11.2"
 gem "faraday",         "~> 0.5.3"
 gem "oauth2",          "~> 0.1.0"
 gem "typhoeus",        "~> 0.1.31"
+gem "rack-rewrite"
 
 group :production do
   gem "pg"

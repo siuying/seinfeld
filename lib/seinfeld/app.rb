@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require "rack/cache"
 require 'mustache/sinatra'
 require 'oauth2'
 require 'yajl'
@@ -12,6 +13,7 @@ class Seinfeld
 
   class App < Sinatra::Base
     register Mustache::Sinatra
+    use Rack::Cache
 
     error do
       e = request.env['sinatra.error']
@@ -210,7 +212,7 @@ class Seinfeld
       end
 
       def cache_for(time)
-        response['Cache-Control'] = "public, max-age=#{time.to_i}"
+        cache_control :public, :max_age => time.to_i
       end
     end
 

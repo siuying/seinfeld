@@ -15,11 +15,9 @@ class Seinfeld
     register Mustache::Sinatra
     use Rack::Cache
     use Rack::Rewrite do
-      if ENV['RACK_ENV'] == 'production'
-        r301 %r{.*}, 'http://opensource.reality.hk$&', :if => Proc.new {|rack_env|
-          rack_env['SERVER_NAME'] != 'opensource.reality.hk'
-        }
-      end
+      r301 %r{.*}, 'http://opensource.reality.hk$&', :if => Proc.new {|rack_env|
+        rack_env['SERVER_NAME'] != 'opensource.reality.hk'
+      }
       r301 '/', '/~siuying'
     end
 
